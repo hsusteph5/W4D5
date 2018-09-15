@@ -3,9 +3,10 @@ require 'spec_helper'
 require 'rails_helper'
 
 feature 'the signup process' do
+  subject(:user) do
+    FactoryBot.build(:user, username: 'Jared', password: 'password')
+  end
 
-  #what is background each ?
-  #why validation doesn't work
   background :each do
     visit new_user_path
   end
@@ -15,9 +16,13 @@ feature 'the signup process' do
   end
 
 
+#find by credentials 
   feature 'signing up a user' do
+    #get the same user
+    #user.
     scenario 'shows username on the homepage after signup' do
-    end 
+      expect(page).to have_content("#{Jared}")
+    end
 
   end
 end
